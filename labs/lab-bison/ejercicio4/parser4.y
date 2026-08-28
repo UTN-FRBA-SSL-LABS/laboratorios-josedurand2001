@@ -31,11 +31,10 @@ input:
  *   Cuando el parser encuentra tokens inválidos, descarta hasta el '\n'
  *   y retoma el parseo de la siguiente línea.
  *
- *   Agregá esta alternativa dentro de 'linea':
- *     | error '\n'  { yyerrok; printf("Error: sintaxis invalida\n"); }
  */
 linea:
     exp '\n'    { printf("= %d\n", $1); }
+  | error '\n'  { yyerrok; printf("Error: sintaxis invalida\n"); }
   ;
 
 exp:
